@@ -48,7 +48,7 @@ public class RouteController {
     @PostMapping("/{driverId}")
     ResponseEntity<Route> saveRoute(@PathVariable("driverId") Long id, @RequestBody Route route) throws Exception {
         Optional<User> driver = userRepository.findById(id);
-        if(!driver.isPresent()) throw new ResourceNotFoundException("peki");
+        if(!driver.isPresent()) throw new ResourceNotFoundException("wrong");
         Route newRoute = new Route();
         newRoute.setFrom(route.getFrom());
         newRoute.setMaxPassengers(route.getMaxPassengers());
@@ -72,14 +72,14 @@ public class RouteController {
             r.setPrice(route.getPrice());
             routeRepository.save(r);
             return ResponseEntity.ok(r);
-        }).orElseThrow(() -> new ResourceNotFoundException("pekmen szidd ki"));
+        }).orElseThrow(() -> new ResourceNotFoundException("wrong"));
     }
 
     @PutMapping("/{routeId}/passenger/{passengerId}")
     ResponseEntity<Route> addPassenger(@PathVariable("routeId") Long routeId, @PathVariable("passengerId") Long passengerId) throws Exception {
         Optional<Route> route = routeRepository.findById(routeId);
         Optional<User> passenger = userRepository.findById(passengerId);
-        if(!route.isPresent() || !passenger.isPresent()) throw new ResourceNotFoundException("pek");
+        if(!route.isPresent() || !passenger.isPresent()) throw new ResourceNotFoundException("wrong");
         Route r = route.get();
         List<User> passengers = r.getPassengers();
         if(passengers.contains(passenger.get())) {
@@ -101,7 +101,7 @@ public class RouteController {
     ResponseEntity<Route> removePassenger(@PathVariable("routeId") Long routeId, @PathVariable("passengerId") Long passengerId) throws Exception {
         Optional<Route> route = routeRepository.findById(routeId);
         Optional<User> passenger = userRepository.findById(passengerId);
-        if(!route.isPresent() || !passenger.isPresent()) throw new ResourceNotFoundException("pek");
+        if(!route.isPresent() || !passenger.isPresent()) throw new ResourceNotFoundException("wrong");
         Route r = route.get();
         List<User> passengers = r.getPassengers();
         if(!passengers.contains(passenger.get())) {
