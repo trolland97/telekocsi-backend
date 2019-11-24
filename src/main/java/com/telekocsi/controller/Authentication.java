@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://telekocsi-frontendv2.herokuapp.com")
+@CrossOrigin(origins = "*")
 @RequestMapping("auth")
 public class Authentication {
 

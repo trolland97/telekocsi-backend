@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/routes")
-@CrossOrigin(origins = "https://telekocsi-frontendv2.herokuapp.com")
+@CrossOrigin(origins = "*")
 public class RouteController {
 
     @Autowired
