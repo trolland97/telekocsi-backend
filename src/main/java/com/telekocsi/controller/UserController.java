@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://telekocsi-frontendv2.herokuapp.com")
 @RequestMapping("api/users")
 public class UserController {
 
